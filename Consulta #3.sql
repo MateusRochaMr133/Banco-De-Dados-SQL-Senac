@@ -27,8 +27,12 @@ SELECT * FROM Usuario
 /* Criando Tabela Aluno*/
 CREATE TABLE Aluno (
 matricula VARCHAR(10) NOT NULL,
-nivelPontualidade VARCHAR(45)
+nivelPontualidade VARCHAR(45),
+idUsuario INT NOT NULL,
+CONSTRAINT FK_Aluno_Usuario_22 FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
+
+/*DROP TABLE Aluno*/
 
 SELECT * FROM Aluno
 /*Fim Tabela Aluno*/
@@ -59,30 +63,35 @@ CONSTRAINT PRIMARY KEY (idRecepcionista)
 
 SELECT * FROM Recepcionista
 /*Fim Tabela Recepcionista*/
-
-
+    
 
 /*Criando Tabela Emprestimo*/
 CREATE TABLE Emprestimo (
+
 idEmprestimo INT AUTO_INCREMENT NOT NULL,
-DataEmprestimo DATETIME DEFAULT NOW(),
-DataDevoluçao DATETIME NOT NULL,
-dataDevoluçaoEfeita DATETIME,
-multa DECIMAL(6,2),
+
 idUsuario INT NOT NULL,
-idAluno INT NOT NULL,
+
 idRecepcionista INT NOT NULL,
 
-CONSTRAINT FK_Emprestimo_Recepcionista_2 FOREIGN KEY (idRecepcionista) REFERENCES Recepcionista(idRecepcionista),
+dataEmprestimno DATETIME NOT NULL,
 
-/*CONSTRAINT FK_Aluno_Emprestimo FOREIGN KEY (idAluno) REFERENCES Aluno(idAluno)*/
+dataDevolucao DATETIME NOT NULL,
 
-CONSTRAINT FK_Emprestimo_Recepcionista FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
+dataDevolucaoEfetiva DATETIME,
 
-CONSTRAINT PRIMARY KEY (idEmprestimo)
-);
+multa DECIMAL (6,2), 
 
-SELECT * FROM Emprestimo
+CONSTRAINT PRIMARY KEY (idEmprestimo),
+
+CONSTRAINT FK_Emprestimo_Recepcionista FOREIGN KEY (idRecepcionista) REFERENCES Recepcionista (idRecepcionista),
+
+CONSTRAINT FK_Emprestimo_Usuario FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario));
+
+SELECT * FROM emprestimo    
+
+DROP TABLE emprestimo
+
 /*Fim da Tabela Emprestimo*/
 
 
@@ -140,12 +149,16 @@ SELECT * FROM Editora
 CREATE TABLE LivroAutor (
 idLivro INT NOT NULL,
 idAutor INT NOT NULL,
+
 CONSTRAINT FK_Livro_Autor FOREIGN KEY (idLivro) REFERENCES Livro(idLivro),
 
-CONSTRAINT FK_Livro_Autores FOREIGN KEY (idAutor) REFERENCES Autor(idAutor)
+CONSTRAINT FK_Livro_Autores FOREIGN KEY (idAutor) REFERENCES Autor(idAutor),
+CONSTRAINT PRIMARY KEY (idLivro,idAutor)
 );
 
-SELECT * FROM LivroAutor
+SELECT * FROM livroautor
+
+DROP TABLE LivroAutor
 /*Fim da Tabela LivroAutor*/
 
 
@@ -160,6 +173,22 @@ numero CHAR(9)
 
 SELECT * FROM ContatoTelefonico
 /*Fim da Tabela ContatoTelefonico*/
+
+
+/*Criando Tabela Emprestimo Livro*/
+CREATE TABLE EmprestimoLivro (
+idEmprestimo INT NOT NULL,
+idLivro INT NOT NULL,
+CONSTRAINT fk_EmprestimoLivro_Emprestimo FOREIGN KEY (idEmprestimo) REFERENCES Emprestimo (idEmprestimo),
+CONSTRAINT fk_EmprestimoLivro_Livro FOREIGN KEY (idLivro) REFERENCES Livro (idLivro),
+CONSTRAINT PRIMARY KEY(idEmprestimo, idLivro)
+);
+
+SELECT * FROM EmprestimoLivro
+/*Fim da Tabela EmprestimoLivro*/
+
+SHOW TABLES;
+
 
 
 
