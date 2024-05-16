@@ -160,7 +160,10 @@ CONSTRAINT FK_Emprestimos_Recepcionistas FOREIGN KEY (idRecepcionista) REFERENCE
 CONSTRAINT FK_Emprestimos_Usuarios FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario));
 
 
-SELECT * FROM Emprestimos
+SELECT * FROM emprestimos
+
+
+SELECT * FROM recepcionistas
 
 
 /*---Final da Tabela Criando TabelaEmprestimos--*/

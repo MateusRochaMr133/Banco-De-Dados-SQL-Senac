@@ -110,3 +110,158 @@ SELECT * FROM clientes
 
 SELECT * FROM contas
 
+
+SELECT cidade,COUNT(idcliente) AS 'Clientes por Cidade' FROM clientes
+WHERE cidade<>'Santos'
+GROUP BY cidade
+ORDER BY cidade DESC
+
+
+
+/*Todas as cidades diferentes de santos*/
+SELECT cidade,COUNT(idcliente) AS 'Clientes por Cidade' FROM clientes
+WHERE cidade<>'Santos'
+GROUP BY cidade
+ORDER BY cidade DESC
+
+
+
+SELECT * FROM clientes
+
+INSERT INTO clientes
+(nome, dataNascimento, celular, cpf, tipologradouro, nomelogradouro, numero, cidade, cep, estado)
+
+VALUES 
+('Rosangela', '1960-08-06', '13988874455', '88899900011','Rua', 'Banto Bento', '49' ,'São Vicente', '87655069', 'SP'),
+
+('Donald', '1930-02-10', '13988661111', '88899900011', 'Rua', 'Mento Norlando', '49' ,'Cubatão', '87659988', 'SP'),
+
+('Roberval', '1940-12-12', '13988660506', '88899900011', 'Rua', 'Casca Bala', '50', 'Garujá', '87656541', 'SP'),
+
+('Pato', '1950-03-03', '13988668877', '88899900011', 'Rua', 'Loreval Sul', '55', 'Monguagá', '87656684', 'SP');
+
+
+('Margarida', '1970-07-22', '13988776655', '88899900011', 'Rua', 'Bartolomeu Prado', '49', 'São Paulo', '87654428', 'SP');
+
+
+
+
+SELECT cidade,COUNT(idcliente) AS 'Clientes por Cidade' FROM clientes
+WHERE COUNT(idcliente)>=2
+GROUP BY cidade
+ORDER BY COUNT(idcliente),cidade
+
+
+SELECT cidade,COUNT(idcliente) AS 'Clientes por Cidade' FROM clientes
+GROUP BY cidade
+HAVING COUNT(idcliente) >=2
+ORDER BY COUNT(idcliente) DESC
+
+SELECT * FROM clientes
+
+/*Média de clientes que possui, vai contar a quantidade de clientes e dividir pela quantidade, ele somou todos os ids do 1 ate o 9 e dividir pela quantidade de ids que tem no caso é 9 ids*/
+SELECT AVG(idcliente) FROM clientes
+
+
+
+/*Pegou o saldo e somou, somou todos os valores do saldo*/
+SELECT AVG(saldo) FROM contas;
+SELECT saldo FROM contas
+
+
+/*Mostrou a quantidade de idscliente*/
+SELECT COUNT(idcliente) FROM clientes
+
+/*Mostrou todas as cidades e agroupou com o idcliente que temos 9 no total e organizou pela quantidade de cidades*/
+SELECT cidade, COUNT(idcliente) FROM clientes
+GROUP BY cidade
+
+
+
+
+
+
+SELECT * FROM contas
+
+
+
+SELECT numeroconta, COUNT(idTipoConta) FROM contas
+GROUP BY idTipoConta
+
+
+
+
+
+
+
+
+SELECT idTipoConta, COUNT(idConta) FROM contas
+GROUP BY idTipoConta
+
+
+
+
+
+SELECT cidade,COUNT(idcliente) AS 'Clientes por Cidade' FROM clientes
+
+
+
+SELECT * FROM contas
+
+
+
+SELECT saldo AS 'Saldo até', COUNT(idConta) AS 'Qtd Contas' FROM contas
+GROUP BY idTipoConta>1000
+
+
+
+SELECT saldo AS 'Saldo até', COUNT(idConta) AS 'Qtd Contas' FROM contas
+GROUP BY saldo
+
+
+
+
+SELECT saldo AS 'Saldo Até', COUNT(saldo) AS 'Qtd Contas' FROM contas
+GROUP BY saldo>1000
+
+
+
+
+
+
+SELECT * FROM clientes
+
+
+
+SELECT nome FROM clientes
+
+ORDER BY COUNT(celular),cidade
+
+
+
+
+
+SELECT cidade,COUNT(idcliente) AS 'Clientes por Cidade' FROM clientes
+WHERE COUNT(idcliente)>=2
+GROUP BY cidade
+ORDER BY COUNT(idcliente),cidade
+
+
+/*Like = Parecido*/
+SELECT nome, celular, cidade FROM clientes
+WHERE celular LIKE '13%'
+ORDER BY nome 
+
+
+SELECT nome, complemento, cidade FROM clientes
+WHERE complemento<>'AP 44'
+WHERE Counte = 'São Vicente'
+ORDER BY nome
+
+
+
+
+SELECT * FROM clientes
+
+
+
