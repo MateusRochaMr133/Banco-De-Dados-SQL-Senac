@@ -617,3 +617,23 @@ DROP TABLE usuario;
 
 
 
+
+SELECT * FROM clientes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

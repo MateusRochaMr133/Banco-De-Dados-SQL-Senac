@@ -128,11 +128,17 @@ ORDER BY cidade DESC
 
 SELECT * FROM clientes
 
+
+
+
+
+
+
 INSERT INTO clientes
 (nome, dataNascimento, celular, cpf, tipologradouro, nomelogradouro, numero, cidade, cep, estado)
 
 VALUES 
-('Rosangela', '1960-08-06', '13988874455', '88899900011','Rua', 'Banto Bento', '49' ,'São Vicente', '87655069', 'SP'),
+('Rosal', '1960-08-06', '13988874455', '88899900011','Rua', 'Banto Bento', '49' ,'São Vicente', '87655069', 'SP'),
 
 ('Donald', '1930-02-10', '13988661111', '88899900011', 'Rua', 'Mento Norlando', '49' ,'Cubatão', '87659988', 'SP'),
 
@@ -140,8 +146,7 @@ VALUES
 
 ('Pato', '1950-03-03', '13988668877', '88899900011', 'Rua', 'Loreval Sul', '55', 'Monguagá', '87656684', 'SP');
 
-
-('Margarida', '1970-07-22', '13988776655', '88899900011', 'Rua', 'Bartolomeu Prado', '49', 'São Paulo', '87654428', 'SP');
+('Margarida', '1970-07-22', '13988776655', '88899900011', 'Rua', 'Bartolomeu Prado', '49', 'Santos', '87654428', 'SP');
 
 
 
@@ -170,7 +175,7 @@ SELECT saldo FROM contas
 
 
 /*Mostrou a quantidade de idscliente*/
-SELECT COUNT(idcliente) FROM clientes
+SELECT COUNT(idcliente) FROM clientecontass
 
 /*Mostrou todas as cidades e agroupou com o idcliente que temos 9 no total e organizou pela quantidade de cidades*/
 SELECT cidade, COUNT(idcliente) FROM clientes
