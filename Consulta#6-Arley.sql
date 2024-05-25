@@ -300,22 +300,216 @@ WHERE codConsulta=11;
 
 
 
-/*Desafio 7 - Atualizar a consulta do dentista de especialidade ortodontia, mudando o tipo de consulta para Tratamento e inserindo uma observação do dentista com o seguinte texto: “Tratamento será realizado em 10 consultas. Prioridade: Moderada. Remédio aplicado: Ponstan, caso sinta dores”*/
+/*Desafio 7 - Atualizar a consulta do dentista de especialidade ortodontia, 
+mudando o tipo de consulta para Tratamento e inserindo uma observação do 
+entista com o seguinte texto: “Tratamento será realizado em 10 consultas. 
+Prioridade: Moderada. Remédio aplicado: Ponstan, caso sinta dores”*/
 
-alter
+SELECT * FROM dentista
 
-
-
-
-
-
-
+SELECT * FROM consulta
 
 
+UPDATE consulta
+SET tipoconsulta= 'Tratamento', observacao='Tratamento será realizado em 10 consultas. 
+Prioridade: Moderada. Remédio aplicado: Ponstan, caso sinta dores'
+WHERE codConsulta=12;
 
 
 
 
+
+
+
+
+
+
+
+
+/*Ordenando em ordem alfabetica A-Z*/
+SELECT nome, cpf, celular FROM clientes
+ORDER BY nome /*A-Z*/
+
+SELECT nome, cpf, celular FROM clientes
+ORDER BY DESC /*Z-A*/ 
+
+
+SELECT nome, datanascimento FROM clientes
+ORDER BY dataNascimento
+
+SELECT nome, datanascimento FROM clientes
+ORDER BY idCliente DESC
+
+
+/*Desafio 8 - Selecionar nome e 
+telefone de todo os pacientes que residem em Santos, em ordem alfabética;*/
+
+SELECT * FROM paciente
+
+SELECT nome, telefone FROM paciente
+WHERE cidade='santos'
+ORDER BY nome ASC;
+
+
+
+
+
+
+
+
+
+
+
+
+/*Desafio 9 - Selecionar o nome dos dentistas, a datas da consulta, 
+o nome do paciente e 
+seu telefone, APENAS dos dentistas que possuem consultas;  */
+
+
+
+
+SELECT d.nome AS Nome_Dentista, c.dataconsulta AS Data_,  AS Nomep.nome_Paciente, p.telefone AS Telefone_Paciente
+FROM dentista d
+JOIN consulta c ON d.codDentista = c.codDentista
+JOIN paciente p ON c.codPaciente = p.codPaciente;
+
+SELECT * FROM paciente
+
+SELECT * FROM dentista
+
+
+
+SELECT * FROM consulta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Desafio 10 - Selecionar o nome do dentista, a data da consulta e o 
+tipo da consulta, MESMO quando os dentistas não possuam consultas;  */
+SELECT d.nome AS Nome_Dentista, c.dataconsulta AS Data_Consulta, c.tipoconsulta AS Tipo_Consulta
+FROM dentista d
+LEFT JOIN consulta c ON d.codDentista = c.codDentista;
+
+
+SELECT * FROM dentista
+SELECT * FROM consulta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Desafio 11 - Criar uma query que exiba a quantidade de dentistas que a clínica possui, agrupando-os por especialidade, ordenando pelo nome da especialidade de
+ A-Z. Para isto, você utilizará o comando group by do sql.*/
+
+SELECT especialidade, COUNT(*) AS Quantidade_Dentistas
+FROM dentista
+GROUP BY especialidade
+ORDER BY especialidade ASC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Desafio 12 - Criar uma query que mostre a quantidade de 
+consultas que a clínica possui em determinado período do ano. Escolher um mês que 
+retorne ao menos uma consulta, e incluir o mês como filtro. */
+SELECT COUNT(*) AS Quantidade_Consultas
+FROM consulta
+WHERE MONTH(dataconsulta) = 1/*So colocar o mes desejado*/;
+
+SELECT * FROM consulta
+
+
+
+
+
+
+
+
+
+
+
+
+/*Desafio 13 - Criar uma query que traga todos os 
+tipos de consulta, agrupadas pela quantidade. */
+
+SELECT tipoconsulta, COUNT(*) AS Quantidade
+FROM consulta
+GROUP BY tipoconsulta;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Desafio 14 - Criar uma query que 
+traga o número de pacientes que a clínica possui. */
+SELECT COUNT(*) AS Numero_de_Pacientes
+FROM paciente;
+
+
+
+
+
+
+
+
+
+
+
+
+/*Desafio 15 - Criar uma query que 
+traga todas as consultas da especialidade implantodontia. 
+Deve vir na query o nome do dentista, o cro, a data da consulta e o 
+nome do paciente, ordenados da data mais atual para a mais antiga. */
+SELECT d.nome AS Nome_Dentista, d.cro AS CRO, c.dataconsulta AS Data_Consulta, p.nome AS Nome_Paciente
+FROM consulta c
+JOIN dentista d ON c.codDentista = d.codDentista
+JOIN paciente p ON c.codPaciente = p.codPaciente
+WHERE d.especialidade = 'Implantodontia'
+ORDER BY c.dataconsulta DESC;
 
 
 
